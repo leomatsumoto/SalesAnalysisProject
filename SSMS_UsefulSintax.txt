@@ -1,0 +1,4 @@
+To manage updates on the DB and be able to rollback
+	BEGIN TRAN
+	COMMIT
+	ROLLBACK

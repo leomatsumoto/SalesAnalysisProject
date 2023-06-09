@@ -1,0 +1,16 @@
+The Fact and Dim tables conceps comes from Star Schema, used in Data Engeneering 
+	The Star schema is widely used in the modelling of data warehouses and dimensional data marts. It is composed of a single fact table that references any number of dimension tables.
+
+
+A Fact Table is one that holds the primary keys of the referenced dimension tables along with some quantitative metrics (i.e. measurements) over which some sort of calculation can be performed. Some common examples of facts tables include orders, logs and time-series financial data.
+
+Dimension Tables hold the descriptive information for all related fields that are included in the fact table’s records. A few common examples of Dimension Tables are physical entities such as a Customer and Product tables or even Time Tables. In general, the Dimension Tables are expected to be much smaller in size compared to Fact Tables.
+
+
+
+-- When (not) to use the Star Schema
+As previously mentioned, dimensions in the Star Schema are denormalized, potentially leading to repeating values within a table. Consequently, storage requirements for the Star Schema are relatively larger than those of other schemas, such as the normalized Snowflake Schema. If storage size is a concern, this data redundancy may warrant reconsideration of the Star Schema.
+
+Furthermore, the data redundancy in the Star Schema heightens the risk to data integrity, as new updates, deletions, and insertions may affect the overall data integrity due to data being repeated in multiple records.
+
+Although the Star Schema is simple to design and implement because of the straightforward relationships between tables, maintaining it may pose a challenge due to the aforementioned data integrity concerns. With new data ingested and potential creation of new tables, validating and preserving data integrity throughout the Data Warehouse may become difficult.
