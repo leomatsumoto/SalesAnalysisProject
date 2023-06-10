@@ -1,0 +1,43 @@
+SELECT 
+		p.[ProductKey]
+      ,p.[ProductAlternateKey] AS ProductItemCode
+      --,p.[ProductSubcategoryKey]
+      --,[WeightUnitMeasureCode]
+      --,[SizeUnitMeasureCode]
+      ,p.[EnglishProductName] AS [Product Name]
+	  ,c.EnglishProductCategoryName AS [Product Category]
+	  ,s.EnglishProductSubcategoryName AS [Product Subcategory]
+      --,[SpanishProductName]
+      --,[FrenchProductName]
+      --,[StandardCost]
+      --,[FinishedGoodsFlag]
+      ,p.[Color] AS [Product Color]
+      --,[SafetyStockLevel]
+      --,[ReorderPoint]
+      --,[ListPrice]
+      ,ISNULL (p.[Size], 'Unique') AS [Product Size]
+      --,[SizeRange]
+      --,[Weight]
+      --,[DaysToManufacture]
+      ,p.[ProductLine] AS [Product Line]
+      --,[DealerPrice]
+      --,[Class]
+      --,[Style]
+      ,p.[ModelName] AS [Product Model Name]
+      --,[LargePhoto]
+      ,p.[EnglishDescription] AS [Product Description]
+      --,[FrenchDescription]
+      --,[ChineseDescription]
+      --,[ArabicDescription]
+      --,[HebrewDescription]
+      --,[ThaiDescription]
+      --,[GermanDescription]
+      --,[JapaneseDescription]
+      --,[TurkishDescription]
+      --,[StartDate]
+      --,[EndDate]
+      ,ISNULL (p.[Status], 'Outdated') AS [Product Status] -- makes it so there is  status for products that came without one
+  FROM [AdventureWorksDW2022].[dbo].[DimProduct] as p
+	INNER JOIN dbo.DimProductSubcategory as s ON s.ProductSubcategoryKey = p.ProductSubcategoryKey 
+	INNER JOIN dbo.DimProductCategory as c ON c.ProductCategoryKey = s.ProductCategoryKey
+  ORDER BY p.ProductKey

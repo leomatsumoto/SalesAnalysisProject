@@ -1,0 +1,25 @@
+The task in hand, based on the business demand we got is:
+- make the internet sales report into a interactive dashboard
+	- specs: 
+		- amount and type of product sold
+		- to whom (clients)
+		- when (date)
+		- who sold it (sales person)
+			- nees to be able to filter the salesman
+		- compare the numbers to a budget they have (sent on xlxs)
+		- look 2 years back (budget from 2023) when doing sales analysis
+
+
+The first step we will take, is to have the date data cleaned, so we can manipulate it to build the dashboard further in the future. 
+
+	In order to do that, we need to make a query selecting the relevant info from dbo.DimDate
+	DimDate was converted into a csv file
+
+----
+Custumer data 
+	- left join dimcustumer and geograpgykey so we can use geodata later. The geodata in c.dimcustumer is just a PK
+	- on gender, CASE wase used to convert M and F into Male and Female
+	- FullName was made concatenating c.firstname and c.lastname
+
+---- Product
+	- left join with category and subcategory
