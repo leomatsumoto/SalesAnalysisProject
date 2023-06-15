@@ -30,6 +30,8 @@ SELECT
       ,c.[DateFirstPurchase] AS [Date First Purchase]
       --,[CommuteDistance]
 	  ,g.city AS [Customer City]
+	  ,g.[EnglishCountryRegionName] AS [Customer Country]
+	  ,g.[SalesTerritoryKey] AS [Sales Region]
   FROM [AdventureWorksDW2022].[dbo].[DimCustomer] AS c -- declale nickname for table when doing a join
-	LEFT JOIN dbo.DimGeography AS	g ON g.GeographyKey = c.GeographyKey -- the only info pulled from g is city
+	LEFT JOIN [AdventureWorksDW2022].[dbo].[DimGeography] AS g ON g.GeographyKey = c.GeographyKey -- the only info pulled from g is city
   ORDER BY CustomerKey ASC	
